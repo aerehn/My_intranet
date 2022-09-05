@@ -123,7 +123,7 @@ def image(request, file):
     file=str(path).split("/")[-1]
     name=str(path.resolve().stem)
     directory=path.resolve().parent
-    folder = str(str(directory).split("gallery")[-1]).replace("\\","/")
+    folder = str(str(directory).split("gallery")[-1]).replace("/","/")
     image_files = [str(i).split("/")[-1] for i in directory.iterdir() if str(i).split('.')[-1]in allowed_types ]
     image_files.sort()
     current_index = image_files.index(str(file))
@@ -138,6 +138,6 @@ def image(request, file):
     next_url = folder+"/"+str(image_files[next_index])
     previous_url=folder+"/"+str(image_files[previous_index])
     image_path=str(path).split("gallery")[-1][1:] 
-    return_url = "/".join(str(path).split("gallery")[-1][1:].split("\\")[:-1])
+    return_url = "/".join(str(path).split("gallery")[-1][1:].split("/")[:-1])
     #print(return_url)
     return render(request, 'image.html',{'path':image_path,'return_url':return_url,'next_url':next_url,'previous_url':previous_url,'name':name[-7:]})
