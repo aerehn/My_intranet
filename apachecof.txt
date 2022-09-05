@@ -1,0 +1,27 @@
+<VirtualHost *:80>
+        ServerName my_intranet.localhost
+        ServerAlias www.my_intranet.localhost
+        DocumentRoot /home/n3073/My_intranet
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+        Alias /static/ /home/n3073/My_intranet/static/
+        <Directory /home/n3073/My_intranet/static>
+                Require all granted
+        </Directory>
+
+        Alias /media/ /home/n3073/My_intranet/media/
+        <Directory /var/www/django/myproject/media>
+                Require all granted
+        </Directory>
+
+        <Directory /home/n3073/My_intranet/sok_website>
+                <Files wsgi.py>
+                        Require all granted
+                </Files>
+        </Directory>
+
+        WSGIDaemonProcess mydjangoproject python-path=/home/n3073/My_intranet python-home=/home/n3073/My_intranet/my_env
+        WSGIProcessGroup My_intranet
+        WSGIScriptAlias / /home/n3073/My_intranet/sok_website/wsgi.py
+</VirtualHost>
