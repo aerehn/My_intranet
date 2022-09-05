@@ -1,0 +1,226 @@
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+      }
+      
+      100% {
+        transform: scaleY(1)
+      }
+}
+@keyframes growUp {
+    from{display:block}
+    0% {
+        transform: scaleY(1)
+      }
+      
+      100% {
+        transform: scaleY(0)
+      }
+    to{height:0px}
+}
+
+.tableul{
+    margin-top:5px;
+    margin-left:var(--primary-left-margin);
+    list-style: none;
+    display:block;
+    font-family: var(--primary-font);
+    color: var(--main-text-color);
+    position:relative;
+}
+.sheet-title{
+    color:var(--main-text-color);
+    padding:4px;
+    border: 0px ;
+    border-radius: 4px;
+    background-color: var(--folder-bg-color);
+    margin-bottom:0px;
+    display:inline-block;
+}
+
+th{
+    background-color: var(--folder-bg-color);
+    padding:3px;
+}
+ul li{
+    margin-bottom:10px;
+    width:fit-content
+}
+ul li table{
+    display:none;
+    margin-top:10px;
+    margin-left:5px;
+    border-collapse:collapse;
+    
+}
+
+
+
+
+td{
+    background-color: var(--file-bg-color);
+    margin:0px;
+    padding:0px;
+    border:0px;
+    padding:2px;
+    border-radius: 0px;
+}
+
+table tr:last-child .Täyttömenetelmä{
+    border-radius:0px 0px 4px 0px;
+}
+table tr:last-child .Attribuutti{
+    border-radius:0px 0px 0px 4px;
+}
+table tr:first-child .Attribuutti{
+    border-radius:4px 0px 0px 0px;
+
+}
+.Attribuutti{
+    padding-left:6px;
+}
+.Täyttömenetelmä{
+    padding-right:6px;
+}
+table tr:first-child .Täyttömenetelmä{
+    border-radius:0px 4px 0px 0px;
+
+}
+table tr .Kohdesarake{
+    text-align: center;
+}
+table tr:hover td{
+    background-color: var(--folder-bg-color);
+}
+.sheetname {
+    display:none;
+    position:relative;
+    
+  }
+
+.sheetname:checked~ table{
+    display:block;
+    animation: growDown 300ms ease-in-out;
+    transform-origin: top center;
+  }
+
+.sheetname:not(:checked)~ table{
+    animation: growUp 300ms ease-in-out;
+    transform-origin: top center;
+    animation-duration: 0.3s;
+}
+label{
+    display:block;
+    padding:4px;
+    border-radius: 4px;
+    background-color: var(--folder-bg-color);
+    min-width:200px;
+    width:fit-content;
+}
+label:hover{
+    cursor:pointer;
+}
+
+
+
+
+
+
+/*sok forms*/
+.dropdown{
+    float:left;
+    
+    margin-right: 3px;
+}
+.save {
+    display: block;
+    float:left;
+    text-decoration: none;
+    margin:0px;
+    margin-right: 3px;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border-radius: 4px;
+    font-size: var(--button-font-size);
+    padding:var(--button-padding);
+    font-weight: bold;
+    border: 2px solid var(--button-border-color);
+    font-family: var(--primary-font);
+    cursor: pointer;
+    margin-left: 0px;
+}
+.save:hover{
+    background-color: var(--highlight-color);
+    border:2px solid var(--main-bg-color);
+}
+
+
+
+.post-form{
+    display:inline-block;
+    background-color: var(--main-bg-color);
+    padding-left:var(--primary-left-margin);
+    height: 40px;
+}
+
+form div p input {
+    padding:5px;
+    background: var(--button-bg-color);
+    color:var(--button-text-color);
+    min-width: 100px;
+    border-radius: 0px var(--primary-border-radius) var(--primary-border-radius) 0px;
+    border: 2px solid var(--button-border-color);
+    border-left: none;
+    font-size: var(--button-font-size);
+    flex-grow: 100;
+  }
+
+form div p select {
+    background: var(--button-bg-color);
+    min-width: 100px;
+    border-radius: 0px var(--primary-border-radius) var(--primary-border-radius) 0px;
+    border: 2px solid var(--button-border-color);
+    padding:2px;
+    margin-left: 0px;
+    border-left: none;
+    font-size: var(--button-font-size);
+    flex-grow: 100;
+}
+form div p{
+    display:flex;
+    min-width: var(--form-width);
+    max-width: var(--form-width);
+    margin-bottom: 5px;
+    padding-right: 0px;
+    padding-left:0px;
+    padding: 0px 0px;
+}
+form div p label{
+    background-color: var(--secondary-bg-color);
+    min-width: fit-content;
+    color:var(--button-text-color);
+    margin-right: 0px;
+    padding:var(--button-padding);
+    border-radius: 4px 0px 0px 4px;
+    border: 2px solid var(--button-border-color);
+    border-right: none;
+    font-size: var(--button-font-size);
+}
+form div{
+    padding:0px;
+}
+
+.message{
+    border-radius: var(--primary-border-radius);
+    border: 1px solid var(--button-border-color);
+    background-color: var(--button-bg-color);
+    font-size: 14px;
+    margin: 0px;
+    padding:2px;
+    max-width:520px;
+    flex-grow: 100;
+}
+
+.message:empty{
+    display:none;
+}

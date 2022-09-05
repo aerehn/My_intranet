@@ -1,0 +1,5 @@
+.meemi{
+    width:fit-content;
+    height:fit-content;
+    margin-left: var(--primary-left-margin);
+}

@@ -1,0 +1,19 @@
+
+{% load static %}
+{{ block.super }}
+
+
+<nav>
+    <div>
+    <img src="{% static "img/intranet.jpeg"%}" %}" alt="-malerlogo-" class="logo"/>
+    <ul>
+        <script src="{% static 'js/links.js' %}" type="text/javascript"></script>
+        {% url 'index' as index_url %}
+        <li class="mainlink"><a href="{{index_url}}"><span>Koti</span></a></li>
+        
+        <li class="mainlink"><a a class="mid" href="{% url 'gallery' %}">Gallery</a></li>
+        
+        <!--<li><button type="button" onclick="goToPim()">Testilinkki</button></li>-->
+    </ul>
+</div>
+</nav>

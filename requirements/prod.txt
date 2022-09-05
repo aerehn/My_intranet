@@ -1,0 +1,13 @@
+Django==4.0.4
+pandas
+numpy
+pillow
+opencv-python
+pdf2image
+openpyxl
+gunicorn
+django-sslserver
+
+django-extensions
+Werkzeug
+pyOpenSSL

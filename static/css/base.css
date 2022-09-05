@@ -1,0 +1,303 @@
+:root {
+    --main-bg-color: #193882;
+    --main-text-color: white;
+    --secondary-text-color: black;
+    --main-header-text-color: white; 
+    --secondary-bg-color: #fff;
+    --highlight-color:rgb(235, 235, 235);
+    --button-border-color: black;
+    --button-bg-color: white;
+    --button-text-color:black;
+    --button-padding:8px;
+    --button-font-size: 16px;
+    --primary-font: Arial;
+    --primary-border-radius:max(0.4vw,6px);
+    --form-width: 450px;
+    --primary-left-margin:20px;
+    --file-bg-color: #187bcd;
+    --folder-bg-color:#1167b1;
+    --file-explorer-text-color: white;
+    --hover-display: none;
+    --nav-z-index:1000;
+    --secondary-z-index:50;
+    --nav-animation-duration:0.4s;
+    --board-width:140px;
+    --transition:all 0.6s ease;
+    --paragraph-font-size:min(1vw,0.7cm);
+    --label-font-size: 2vw;
+    --header-font-size:min(3vw,1cm);
+    --boards-transition: all 1s ease;
+}
+@keyframes example {
+    from {filter: grayscale();}
+    to {filter:none;}
+  }
+@keyframes navbg {
+    from{background-color:var(--secondary-bg-color);}
+    to{background-color: var(--highlight-color);}
+}
+
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+      }
+      
+      100% {
+        transform: scaleY(1)
+      }
+}
+
+content{
+    top:60px;
+    position:absolute;
+    display:flex;
+    justify-content: left;
+    width:100%;
+    margin-bottom:20px;
+}
+div {
+    margin-left: 0px;
+    padding:0px;
+}
+.content-container{
+    width:100%;
+}
+
+p {
+    font-family: var(--primary-font);
+    padding: 10px var(--primary-left-margin) ;
+    color: var(--main-text-color);
+    font-size: var(--paragraph-font-size);
+}
+
+h1, h2 {
+    font-family: var(--primary-font);
+    font-size: var(--header-font-size);
+    padding: 10px var(--primary-left-margin);
+    color: var(--main-header-text-color);
+    position:auto;
+    margin:0px;
+    z-index: var(--secondary-z-index);
+}
+
+* {
+    margin: 0;
+    padding:0;
+    
+}
+
+body {
+    /*background-image: url("/static/img/IMG_20220616_171409.jpg");*/
+    background-color: var(--main-bg-color);
+    background-size:cover;
+    background-repeat: no-repeat;
+    
+}
+
+/* navbar */
+nav {
+    width: 100%;
+    height: 60px;
+    background-color: var(--secondary-bg-color) ;
+    z-index: 101;
+    position:fixed;
+    top:0;
+    margin-top: 0px;
+    font-weight: bold;
+    justify-content: center;
+    display: flex;
+}
+nav div{
+    display:inline-block;
+    width:fit-content;}
+nav img{
+    float:left;
+    width:110px;
+    max-height:30px;
+    padding:15px;
+}
+nav p {
+    font-family: var(--primary-font);
+    color: #222;
+    font-size: 24px;
+    line-height: 55px;
+    float: left;
+    padding: 0px 20px 20px 20px;
+    
+}
+
+nav > div > ul{
+    width:700px;
+    height:100%;
+}
+
+nav ul li{
+    float: left;
+    list-style: none;
+    position:relative;
+    width:90px;
+    height:60px;
+}
+nav ul li{
+    list-style: none;
+    display: block;
+    margin:0px;
+    z-index: 100;
+}
+nav ul li:hover{
+    float: left;
+    list-style: none;
+    position:relative;
+    background-color: var(--highlight-color);
+    animation-name: navbg;
+    animation-duration: var(--nav-animation-duration);
+}
+nav ul li ul{
+    display:none;
+    position:relative;
+    z-index: 100;
+    margin:0px;
+    height: 80px;
+}
+nav ul li:hover ul{
+    display:block;
+    position:relative;
+    z-index: 100;
+    margin:0px;
+    animation: growDown 300ms ease-in-out;
+    transform-origin: top center;
+}
+
+nav ul li:hover ul li{
+    position:relative;
+}
+
+nav ul li a{
+    font-family: var(--primary-font);
+    color: #222;
+    font-size: 14px;
+    padding: 22px 14px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+}
+
+nav ul li ul .mid {
+    background-color: var(--secondary-bg-color);
+    border-radius: 0px 0px 0px 0px;
+    text-align: left;
+    float:left;
+}
+nav ul li ul .last {
+    background-color: var(--secondary-bg-color);
+    border-radius: 0px 0px 4px 4px;
+    text-align: left;  
+}
+nav ul li ul .last2{
+    background-color: var(--secondary-bg-color);
+    border-radius: 0px 0px 4px 4px;
+    text-align: left;
+    
+}
+nav ul li ul .mid2{
+    background-color: var(--secondary-bg-color);
+    border-radius: 0px 0px 0px 0px;
+    text-align: left;
+    
+    position:relative;
+    z-index: 100;
+}
+nav ul li ul li {
+    background-color: var(--secondary-bg-color);
+    border-radius: 0px 0px 4px 4px;
+    text-align: left; 
+    justify-content: left;
+    width:fit-content;
+    height:fit-content;
+    filter: grayscale();
+    float:left;
+    display:inline-flex;
+}
+
+nav ul li ul li:hover{
+    filter:none;
+    animation-name: example;
+    animation-duration: var(--nav-animation-duration);
+
+}
+nav ul li ul li a{
+    padding: 14px 14px;
+    float:left;
+    justify-content: left;
+    margin-left: 0px;
+    width:100px;
+    height: fit-content;
+    
+}
+nav ul li ul li a p{
+    font-size: medium;
+    margin:0px;
+    padding:0px;
+    height:25px;
+    line-height: 25px;
+}
+nav ul li ul li a img{
+    padding: 0px 0px;
+    margin-left: 0px;
+    display: block;
+    float:left;
+    justify-content: left;
+    width: auto;
+    max-height: 25px;
+    max-width: 100px;
+
+}
+nav ul li ul li a img:hover{
+    padding: 0px 0px;
+    border-radius: 0px 0px 0px 0px;
+    
+}
+
+nav ul li ul li .mid:hover{
+    /*background-color: #979797;*/
+    background-color: var(--highlight-color);
+    border-radius: 0px 0px 0px 0px;
+    animation-name: navbg;
+    animation-duration: var(--nav-animation-duration);
+}
+
+nav ul li ul li .last:hover{
+    /*background-color: #979797;*/
+    background-color: var(--highlight-color);
+    border-radius: 0px 0px 4px 4px;
+    animation-name: navbg;
+    animation-duration: var(--nav-animation-duration);
+}
+
+nav ul li ul li .mid2:hover{
+    /*background-color: #979797;*/
+    background-color: var(--highlight-color);
+    border-radius: 0px 0px 0px 0px;
+    animation-name: navbg;
+    animation-duration: var(--nav-animation-duration);
+}
+
+nav ul li ul li .last2:hover{
+    /*background-color: #979797;*/
+    background-color: var(--highlight-color);
+    border-radius: 0px 0px 4px 4px;
+    animation-name: navbg;
+    animation-duration: var(--nav-animation-duration);
+}
+
+
+.copy {
+    
+    height:inherit;
+    width: height;
+
+}
+.copy-img{
+    height:inherit;
+    width: inherit;
+}

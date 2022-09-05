@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block title %}Infotaulu{% endblock %}
+{% block content %}
+{% load static %}
+
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static "css/gallery.css"%}" %}"/>
+    <button class="back-button" onclick="navigate('{{back_path}}')">back</button>
+    <div class="center">
+        <h1>Gallery</h1>
+    </div>
+    <div class="center gg">
+    <div class=" board-container" style="display:inline-block">
+        <input class="input-toggle" type="checkbox" id="toggle"/>
+        <label for="toggle"><img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Noun_Project_note_taking_icon_2892274.svg" alt="<"/></label>
+        
+        <div class="addnotediv">
+            <div class="forms-div">
+                <button type="button" id="textbutton" style="cursor:'default';background-color: white;" class="typebutton" onclick="sideExpand('textformdiv','photoformdiv',this,'photobutton');">Teksti</button>
+                <button type="button" id="photobutton" class="typebutton" onclick="sideExpand('photoformdiv','textformdiv',this,'textbutton');">Kuva</button>
+            </div>
+            <div class="forms-div" id="formsdiv2">
+                <div class="form-div" id="textformdiv">
+                    <form method = "POST" class = "post-form" enctype="multipart/form-data" name="text" id = "textform">
+                        <div class = "dropdown">
+                            {% csrf_token %}
+                    
+                            {{form.as_p}}
+                        </div>
+                        <button type="submit" class="save btn btn-default">Lähetä</button>
+                        <pre class="message">{{message}}</pre>
+                    </form>
+                </div>
+                <div class="form-div collapsed" id="photoformdiv">
+                    <form method = "POST" class = "post-form" enctype="multipart/form-data" name="photo" id="photoform">
+                        <div class = "dropdown">
+                            {% csrf_token %}
+                    
+                            {{photo.as_p}}
+                        </div>
+                        <button type="submit" class="save btn btn-default">Lähetä</button>
+                        <pre class="message">{{message}}</pre>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="center">
+            <div class="padding">
+                <div class="image-container">
+                    <!-- Close the image -->
+                    <span class="closebtn imgspan"  onclick="
+                    this.parentElement.classList.toggle('expanded');
+                    this.parentElement.style.padding='0px';
+                    " >&times;</span>
+                    <!-- Expanded image -->
+                    <img class="expandedImg" id='imgid' />
+                    <!-- Image text -->
+                    <span class="imgtext imgspan"  id='textid' class="imgtext"></span>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="boards">
+            
+            {% for row in rows %}
+            
+                <div class="center ">
+                    <div class="row">
+                        {% for path, name, type in row %}
+                        
+                            <div class="column">
+                                <span class="icontext">{{name}}</span>
+                                
+                                {% if type == 'folder'%}
+                                    <button class="txt-button"  id = '{{path}}' onclick="navigate('{{path}}');"></button>
+                                    <img src="{% static "img/icons/folder.png"%}" %}" onclick="navigate('{{path}}');">
+                                {% else %}
+                                    {% with "/media/gallery/"|add:path as file %}
+                                    <!--<img class="left" id='{{file}}' src="{{file}}" alt='{{name}}' onclick="imageSwap(this,'imgid','textid','{{name}}');">-->
+                                    <img class="left" id='{{file}}' src="{{file}}" alt='{{name}}' onclick="toImage('{{file}}');">
+                                    {% endwith %}
+                                {% endif %}
+                                
+                            </div>
+                            
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                
+            {% endfor %}
+        </div>
+        
+    </div>
+    
+    </div>
+{% endblock %}
