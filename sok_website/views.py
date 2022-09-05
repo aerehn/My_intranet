@@ -27,8 +27,8 @@ def render_gallery(request,path=MEDIA_ROOT / "gallery",back_path=""):
     
     #           [completefilename for src, imagename,                         type/extension, id]
     
-    image_files = [str(i).split("gallery")[-1][1:].replace("\\","/") for i in path.iterdir() if str(i).split('.')[-1]in allowed_types ]
-    image_names = [str(i).split("\\")[-1].split('.')[0] for i in path.iterdir() if str(i).split('.')[-1]in allowed_types ]
+    image_files = [str(i).split("gallery")[-1][1:].replace("/","/") for i in path.iterdir() if str(i).split('.')[-1]in allowed_types ]
+    image_names = [str(i).split("/")[-1].split('.')[0] for i in path.iterdir() if str(i).split('.')[-1]in allowed_types ]
     types = [str(i).split('.')[-1] for i in path.iterdir() if str(i).split('.')[-1]in allowed_types ]
     
     dataframe=pd.DataFrame({
@@ -120,11 +120,11 @@ def image(request, file):
     print(file)
     path = BASE_DIR/file.replace(":","/").replace("%"," ").replace("&","\'")
     
-    file=str(path).split("\\")[-1]
+    file=str(path).split("/")[-1]
     name=str(path.resolve().stem)
     directory=path.resolve().parent
     folder = str(str(directory).split("gallery")[-1]).replace("\\","/")
-    image_files = [str(i).split("\\")[-1] for i in directory.iterdir() if str(i).split('.')[-1]in allowed_types ]
+    image_files = [str(i).split("/")[-1] for i in directory.iterdir() if str(i).split('.')[-1]in allowed_types ]
     image_files.sort()
     current_index = image_files.index(str(file))
     
