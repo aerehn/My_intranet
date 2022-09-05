@@ -1,0 +1,14 @@
+cd C:\Users\atte.rehnback\Documents\harrasteprojekti\webbisivu & .\env\Scripts\activate & python manage.py runserver 0.0.0.0:80
+virtuaalikoneen aktivointi:
+.\env\Scripts\activate
+Koodin formatointi:
+black .
+Pakettien asennus:
+pip install -r requirements/dev.txt
+Käynnistä kehityspalvelin:
+python manage.py runserver
+python manage.py runserver 10.0.11.195:8080
+gunicorn --bind 0.0.0.0:8800 sok-website.wsgi:application
+django-admin.py startproject sok-website
+
+
