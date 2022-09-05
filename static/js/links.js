@@ -106,6 +106,7 @@ function toImage2(path){
         return true;
     }
     const url = location.href.split("image")[0]+"image/media:gallery:"+path.substring(1).replace(/\//g,":").replace(/\'/,"&").replace(/ /,"%");
+    console.log(url)
     window.open(url,"_self");
 }
 function backToGallery(path){
@@ -114,5 +115,6 @@ function backToGallery(path){
         window.open(url,"_self");
     }
     const url = location.href.split("image")[0]+"gallery/"+path.replace(/\//g,":");
+    console.log(url)
     window.open(url,"_self");
 }
