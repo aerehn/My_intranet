@@ -47,8 +47,8 @@ def render_gallery(request,path=MEDIA_ROOT / "gallery",back_path=""):
     dataframe.sort_values(by='filename', inplace=True, key=lambda col: col.str.lower())
         #dataframe.iloc[dataframe['name'].str.lower().argsort()]
         #dataframe.sort_values("name",ascending=True,inplace=True)
-    folders = [str(i).split("gallery")[-1][1:].replace("\\",":").replace(" ","%").replace("\'","&").replace("\\","/") for i in path.iterdir() if i.is_dir() ]
-    folder_names = [str(i).split("\\")[-1] for i in path.iterdir() if i.is_dir() ]
+    folders = [str(i).split("gallery")[-1][1:].replace("\\",":").replace(" ","%").replace("\'","&").replace("/","/") for i in path.iterdir() if i.is_dir() ]
+    folder_names = [str(i).split("/")[-1] for i in path.iterdir() if i.is_dir() ]
     print(folders)
     folder_types=["folder" for i in path.iterdir() if i.is_dir()]
     
